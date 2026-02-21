@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clube VIP de Descontos | Shopee, Amazon, Shein e Mercado Livre</title>
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome 6 (Biblioteca Confiável) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -171,6 +171,7 @@
             text-align: center;
             backdrop-filter: blur(4px);
             transition: all 0.3s;
+            position: relative;
         }
 
         .benefit-card:hover {
@@ -194,6 +195,23 @@
             color: #aac3d4;
             font-size: 1rem;
             line-height: 1.5;
+        }
+
+        /* Tooltip/Nota de Esclarecimento */
+        .info-note {
+            display: inline-block;
+            background: rgba(255,215,0,0.2);
+            color: #ffdb70;
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 30px;
+            margin-top: 10px;
+            cursor: help;
+        }
+        .info-note i {
+            font-size: 0.8rem;
+            margin-right: 4px;
+            color: #ffdb70;
         }
 
         /* Como funciona */
@@ -395,12 +413,46 @@
             color: #aac3d4;
         }
 
+        /* Footer Ajustado - Links Legais */
         .footer-note {
             text-align: center;
             color: #577a99;
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 60px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,215,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #aac3d4;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #ffdb70;
+            text-decoration: underline;
+        }
+        .footer-disclaimer {
+            font-size: 0.85rem;
+            color: #577a99;
+            max-width: 800px;
+            margin: 10px auto 0;
+        }
+         .footer-disclaimer a {
+            color: #aac3d4;
+            text-decoration: none;
+        }
+        .footer-disclaimer a:hover {
+            color: #ffdb70;
+            text-decoration: underline;
         }
 
         @media (max-width: 700px) {
@@ -419,7 +471,7 @@
         <!-- Header -->
         <div class="header">
             <div class="badge">
-                <i class="fas fa-tag"></i> DE SEGUNDA A SEGUNDA
+                <i class="fas fa-tag"></i> OFERTAS VERIFICADAS DIARIAMENTE
             </div>
             <h1>
                 <i class="fab fa-whatsapp"></i> PROMO, DE SEGUNDA A SEGUNDA <i class="fab fa-whatsapp"></i>
@@ -429,7 +481,8 @@
             </div>
             <div class="highlight-box">
                 <i class="fas fa-fire"></i>
-                <span>Muitos descontos 🔥 Grupo gratuito e com vagas limitadas</span>
+                <!-- Ajuste de texto para gerenciar expectativa -->
+                <span>🔥 Acesso gratuito com vagas limitadas para garantir a qualidade</span>
             </div>
         </div>
 
@@ -460,6 +513,10 @@
                 <i class="fas fa-check-circle"></i>
                 <h3>Ofertas selecionadas</h3>
                 <p>Cada promoção é verificada antes de ser compartilhada</p>
+                <!-- Nota de esclarecimento adicionada -->
+                <div class="info-note" title="As condições, prazos e disponibilidade das ofertas são de responsabilidade dos varejistas parceiros (Amazon, Mercado Livre, etc.).">
+                    <i class="fas fa-info-circle"></i> Verifique as condições na loja
+                </div>
             </div>
             <div class="benefit-card">
                 <i class="fas fa-coins"></i>
@@ -484,17 +541,18 @@
             <div class="step">
                 <div class="step-number">1</div>
                 <h4>Clique para entrar</h4>
-                <p>Basta clicar no botão e confirmar sua entrada no WhatsApp</p>
+                <!-- Descrição mais clara -->
+                <p>Clique no botão e confirme sua entrada em nosso grupo de WhatsApp para começar a receber as ofertas.</p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
                 <h4>Receba as promoções</h4>
-                <p>Ofertas verificadas direto no seu celular</p>
+                <p>Ofertas verificadas direto no seu celular, no conforto do seu WhatsApp.</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <h4>Aproveite quando fizer sentido</h4>
-                <p>Sem pressão. Compre apenas o que for útil para você</p>
+                <p>Sem pressão. Compre apenas o que for útil para você, quando quiser.</p>
             </div>
         </div>
 
@@ -551,7 +609,8 @@
 
         <!-- CTA Principal -->
         <div class="cta-section">
-            <a href="https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k" class="whatsapp-button" target="_blank">
+            <!-- Link do WhatsApp oficial e direto -->
+            <a href="https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i>
                 <span>ENTRAR NO GRUPO VIP <small>vagas limitadas</small></span>
             </a>
@@ -570,15 +629,15 @@
             <h2 style="color: white; text-align: center; margin-bottom: 30px;">Perguntas frequentes</h2>
             <div class="faq-item">
                 <div class="faq-question">🤔 O grupo é realmente gratuito?</div>
-                <div class="faq-answer">Sim! O grupo é 100% gratuito e sempre será. Apenas pedimos que respeite as regras para manter a qualidade.</div>
+                <div class="faq-answer">Sim! O acesso ao grupo é 100% gratuito e sempre será. Apenas pedimos que respeite as regras para manter a qualidade para todos.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">⏰ Quantas ofertas são enviadas por dia?</div>
-                <div class="faq-answer">Enviamos em média 5 a 10 ofertas selecionadas por dia, para não encher seu WhatsApp.</div>
+                <div class="faq-answer">Enviamos em média 5 a 10 ofertas selecionadas por dia, para não encher seu WhatsApp e focar no que realmente importa.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">🛒 As ofertas são de quais lojas?</div>
-                <div class="faq-answer">Trabalhamos com Amazon, Mercado Livre, Shopee e Shein - as principais plataformas de e-commerce.</div>
+                <div class="faq-answer">Trabalhamos com Amazon, Mercado Livre, Shopee e Shein - as principais plataformas de e-commerce do momento.</div>
             </div>
         </div>
 
@@ -586,11 +645,29 @@
         <div style="text-align: center; margin: 40px 0 20px;">
             <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">Faça parte do Clube VIP de Descontos</h2>
             <p style="color: #aac3d4; font-size: 1.3rem; margin-bottom: 30px;">Entre agora e comece a economizar de verdade.</p>
-            <a href="https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k" style="background: linear-gradient(135deg, #f9d423, #fdaa33); color: #0a1a2a; padding: 20px 50px; border-radius: 60px; text-decoration: none; font-weight: 700; font-size: 1.5rem; display: inline-block; box-shadow: 0 10px 20px rgba(253, 170, 51, 0.4);">QUERO PARTICIPAR 🚀</a>
+            <a href="https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k" style="background: linear-gradient(135deg, #f9d423, #fdaa33); color: #0a1a2a; padding: 20px 50px; border-radius: 60px; text-decoration: none; font-weight: 700; font-size: 1.5rem; display: inline-block; box-shadow: 0 10px 20px rgba(253, 170, 51, 0.4);" target="_blank" rel="noopener noreferrer">QUERO PARTICIPAR 🚀</a>
         </div>
 
+        <!-- FOOTER AJUSTADO: Links legais e disclaimer -->
         <div class="footer-note">
-            <i class="fab fa-whatsapp" style="color: #25D366;"></i> Clube VIP de Descontos • Ofertas selecionadas diariamente
+            <div class="footer-links">
+                <a href="#" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> Clube VIP de Descontos</a>
+                <a href="#">Sobre Nós</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <div class="footer-disclaimer">
+                <i class="fas fa-info-circle"></i> As ofertas compartilhadas são de responsabilidade dos varejistas (Amazon, Mercado Livre, Shopee, Shein). Nós apenas as selecionamos e divulgamos. Verifique sempre os preços e condições nos sites oficiais antes de comprar.
+            </div>
+            <div style="margin-top: 10px;">
+                <a href="https://www.amazon.com.br" target="_blank" rel="nofollow noopener">Amazon</a> |
+                <a href="https://www.mercadolivre.com.br" target="_blank" rel="nofollow noopener">Mercado Livre</a> |
+                <a href="https://shopee.com.br" target="_blank" rel="nofollow noopener">Shopee</a> |
+                <a href="https://br.shein.com" target="_blank" rel="nofollow noopener">Shein</a>
+            </div>
+            <div style="font-size: 0.8rem; margin-top: 15px;">
+                © 2024 Clube VIP de Descontos. Todos os direitos reservados.
+            </div>
         </div>
     </div>
 </body>
