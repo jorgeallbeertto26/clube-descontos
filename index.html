@@ -3,95 +3,611 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Curadoria | Descontos VIP Diário</title>
+    <title>Casa com Desconto | Achados para seu lar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: linear-gradient(145deg, #0a1a2a 0%, #1a2f40 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; color: white; }
-        .landing-card { max-width: 1200px; width: 100%; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 48px; padding: 40px 30px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); }
-        .header { text-align: center; margin-bottom: 30px; }
-        .badge { background: rgba(255, 215, 0, 0.2); color: #ffdb70; font-weight: 700; padding: 8px 20px; border-radius: 50px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(255, 215, 0, 0.3); }
-        .header h1 { font-size: 2.8rem; background: linear-gradient(120deg, #f9d423, #fdaa33); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
-        .disclaimer-top { font-size: 0.9rem; color: #7f9cbb; margin-top: 15px; font-style: italic; }
-        
-        /* Grid de Lojas - Sem Logos para evitar Phishing Flags */
-        .market-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 40px 0; }
-        .market-tag { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 25px; border-radius: 15px; font-weight: 600; color: #aac3d4; }
-        
-        .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
-        .benefit-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 25px; padding: 25px; text-align: center; }
-        .benefit-card i { font-size: 2rem; color: #fdaa33; margin-bottom: 15px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', Roboto, sans-serif;
+        }
 
-        .cta-section { background: #25D366; border-radius: 50px; padding: 20px; text-align: center; max-width: 500px; margin: 40px auto; transition: transform 0.2s; }
-        .cta-section:hover { transform: scale(1.03); }
-        .whatsapp-link { color: white; text-decoration: none; font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        body {
+            background: #faf7f2;  /* Tom quente e aconchegante */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
 
-        /* Rodapé com links obrigatórios */
-        .footer-legal { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; padding-top: 30px; text-align: center; font-size: 0.85rem; color: #577a99; }
-        .footer-links { margin-bottom: 15px; }
-        .footer-links a { color: #aac3d4; text-decoration: none; margin: 0 10px; }
-        .footer-links a:hover { text-decoration: underline; }
-        
-        /* Modal Simples para Políticas */
-        .legal-box { display: none; background: rgba(0,0,0,0.8); position: fixed; top:0; left:0; width:100%; height:100%; padding: 20px; overflow-y: auto; z-index: 1000; }
-        .legal-content { background: #1a2f40; padding: 30px; border-radius: 20px; max-width: 800px; margin: 40px auto; line-height: 1.6; }
-        .close-btn { color: #fdaa33; cursor: pointer; float: right; font-weight: bold; }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Header com imagem de ambiente */
+        .hero {
+            height: 240px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+            color: white;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            background: rgba(255, 215, 0, 0.9);
+            color: #1e2e3a;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 12px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            max-width: 280px;
+        }
+
+        /* Conteúdo principal */
+        .content {
+            padding: 24px 20px 30px;
+        }
+
+        /* Perfil do Instagram */
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #f8f4ee;
+            padding: 16px;
+            border-radius: 24px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(230, 200, 170, 0.3);
+        }
+
+        .profile-avatar {
+            width: 64px;
+            height: 64px;
+            background: #d9c5b3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #8b6f4c;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e4e;
+            margin-bottom: 4px;
+        }
+
+        .profile-info .username {
+            color: #8b6f4c;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .followers {
+            background: #e8ddd2;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #5e4b38;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .followers i {
+            color: #c97c4e;
+        }
+
+        /* Chamada principal */
+        .headline {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .headline h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e4e;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .headline h2 span {
+            background: linear-gradient(135deg, #f27059, #f79d4e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .headline p {
+            color: #5d6f7e;
+            font-size: 1.1rem;
+        }
+
+        /* Benefícios com emojis de casa */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .benefit-item {
+            background: #f8f4ee;
+            padding: 16px 10px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(200, 170, 140, 0.2);
+        }
+
+        .benefit-item i, .benefit-emoji {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .benefit-item span {
+            font-weight: 600;
+            color: #2c3e4e;
+            font-size: 0.95rem;
+        }
+
+        /* Prévia de produtos (estilo Instagram) */
+        .preview-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .preview-title i {
+            color: #f79d4e;
+            font-size: 1.3rem;
+        }
+
+        .preview-title h4 {
+            color: #2c3e4e;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .product-strip {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            scrollbar-width: thin;
+            scrollbar-color: #d4b08c #f0e4d8;
+        }
+
+        .product-strip::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .product-strip::-webkit-scrollbar-thumb {
+            background: #d4b08c;
+            border-radius: 10px;
+        }
+
+        .product-mini {
+            min-width: 110px;
+            background: white;
+            border-radius: 18px;
+            padding: 12px 8px;
+            border: 1px solid #f0e4d8;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .product-mini .emoji-big {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .product-mini .product-name {
+            font-weight: 600;
+            color: #2c3e4e;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .product-mini .product-price {
+            color: #c97c4e;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .product-mini .old-price {
+            font-size: 0.7rem;
+            color: #9aaebc;
+            text-decoration: line-through;
+        }
+
+        /* Depoimento */
+        .testimonial {
+            background: #fff6ed;
+            padding: 20px;
+            border-radius: 24px;
+            margin-bottom: 24px;
+            border-left: 4px solid #f79d4e;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+        }
+
+        .testimonial i {
+            color: #d9b08c;
+            font-size: 1.2rem;
+            margin-right: 6px;
+            opacity: 0.7;
+        }
+
+        .testimonial p {
+            color: #4a5b68;
+            font-style: italic;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: #d4b08c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .author-info {
+            font-weight: 600;
+            color: #2c3e4e;
+            font-size: 0.9rem;
+        }
+
+        .author-info small {
+            color: #8f9eaa;
+            font-weight: 400;
+            display: block;
+        }
+
+        /* CTA WhatsApp */
+        .cta-card {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 32px;
+            padding: 28px 20px;
+            text-align: center;
+            margin: 24px 0 16px;
+            box-shadow: 0 15px 25px rgba(18, 140, 126, 0.3);
+        }
+
+        .cta-card h3 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .cta-card p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-btn {
+            background: white;
+            color: #075e54;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.8rem;
+        }
+
+        /* Info extra */
+        .info-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: #6d8a9c;
+            font-size: 0.9rem;
+            margin: 16px 0;
+        }
+
+        .info-row i {
+            color: #f79d4e;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #f0e4d8;
+            margin-top: 20px;
+            color: #8f9eaa;
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #8b6f4c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 32px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #brown;
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 { font-size: 1.8rem; }
+            .headline h2 { font-size: 1.6rem; }
+            .benefits-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="landing-card">
-        <div class="header">
-            <div class="badge"><i class="fas fa-shield-alt"></i> COMUNIDADE VERIFICADA</div>
-            <h1>Curadoria de Ofertas VIP</h1>
-            <p class="disclaimer-top">Monitoramos os maiores e-commerces do país para encontrar preços reais.</p>
-        </div>
-
-        <div class="market-grid">
-            <span class="market-tag">Monitorando Amazon</span>
-            <span class="market-tag">Monitorando Mercado Livre</span>
-            <span class="market-tag">Monitorando Shopee</span>
-            <span class="market-tag">Monitorando Shein</span>
-        </div>
-
-        <div class="benefits">
-            <div class="benefit-card">
-                <i class="fas fa-search-dollar"></i>
-                <h3>Análise de Preços</h3>
-                <p>Validamos se o desconto é real antes de enviar.</p>
-            </div>
-            <div class="benefit-card">
-                <i class="fas fa-external-link-alt"></i>
-                <h3>Links Oficiais</h3>
-                <p>Redirecionamos você sempre para o site oficial da loja.</p>
-            </div>
-            <div class="benefit-card">
-                <i class="fas fa-info-circle"></i>
-                <h3>Transparência</h3>
-                <p>Somos um portal independente de divulgação.</p>
+    <div class="container">
+        <!-- Hero com imagem de casa aconchegante -->
+        <div class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-tag"></i> ACHADOS COM DESCONTO
+                </div>
+                <h1>GRUPO FEITO<br>para você</h1>
+                <p>que ama pagar barato em coisas lindas pro lar</p>
             </div>
         </div>
 
-        <div class="cta-section">
-            <a href="https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k" class="whatsapp-link" target="_blank">
-                <i class="fab fa-whatsapp"></i> ACESSAR GRUPO DE OFERTAS
-            </a>
-        </div>
-
-        <div class="footer-legal">
-            <div class="footer-links">
-                <a href="javascript:void(0)" onclick="openLegal('privacidade')">Privacidade</a>
-                <a href="javascript:void(0)" onclick="openLegal('termos')">Termos de Uso</a>
-                <a href="mailto:contato@descontosvipdiario.com.br">Contato</a>
+        <div class="content">
+            <!-- Perfil do Instagram (inspirado na imagem) -->
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    🏠
+                </div>
+                <div class="profile-info">
+                    <h3>laresaconchegantes</h3>
+                    <div class="username">
+                        <i class="fab fa-instagram" style="color: #c97c4e;"></i> @laresaconchegantes
+                    </div>
+                    <div class="followers">
+                        <i class="fas fa-heart"></i> 5,5 mil seguem
+                    </div>
+                </div>
             </div>
-            <p>© 2026 Descontos VIP Diário - Portal Independente de Curadoria.</p>
-            <p style="margin-top: 10px; font-size: 0.75rem;">Aviso: Não somos uma loja. Não processamos pagamentos. Todas as compras são finalizadas nos sites das lojas parceiras.</p>
+
+            <!-- Chamada principal -->
+            <div class="headline">
+                <h2>Casa <span>Achadinhos</span><br>com super desconto</h2>
+                <p>Selecionamos os melhores preços em decoração, cama, mesa e banho</p>
+            </div>
+
+            <!-- Benefícios com viés de lar -->
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-emoji">🛋️</div>
+                    <span>Decoração</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-emoji">🛏️</div>
+                    <span>Cama & Banho</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-emoji">🍳</div>
+                    <span>Cozinha</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-emoji">💡</div>
+                    <span>Iluminação</span>
+                </div>
+            </div>
+
+            <!-- Prévia de produtos (rolagem horizontal) -->
+            <div class="preview-title">
+                <i class="fas fa-fire"></i>
+                <h4>Achados quentinhos da semana</h4>
+            </div>
+
+            <div class="product-strip">
+                <div class="product-mini">
+                    <div class="emoji-big">🛌</div>
+                    <div class="product-name">Jogo de lençol</div>
+                    <div class="old-price">R$ 129</div>
+                    <div class="product-price">R$ 79</div>
+                </div>
+                <div class="product-mini">
+                    <div class="emoji-big">🕯️</div>
+                    <div class="product-name">Diffuser</div>
+                    <div class="old-price">R$ 89</div>
+                    <div class="product-price">R$ 42</div>
+                </div>
+                <div class="product-mini">
+                    <div class="emoji-big">🖼️</div>
+                    <div class="product-name">Quadro decorativo</div>
+                    <div class="old-price">R$ 159</div>
+                    <div class="product-price">R$ 97</div>
+                </div>
+                <div class="product-mini">
+                    <div class="emoji-big">☕</div>
+                    <div class="product-name">Caneca artesanal</div>
+                    <div class="old-price">R$ 45</div>
+                    <div class="product-price">R$ 22</div>
+                </div>
+                <div class="product-mini">
+                    <div class="emoji-big">🧺</div>
+                    <div class="product-name">Cesto organizador</div>
+                    <div class="old-price">R$ 79</div>
+                    <div class="product-price">R$ 39</div>
+                </div>
+            </div>
+
+            <!-- Depoimento -->
+            <div class="testimonial">
+                <i class="fas fa-quote-left"></i>
+                <p>"Entrei no grupo semana passada e já comprei um tapete lindo pela metade do preço. Tô amando!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-info">
+                        Ana M. <small>entrou há 2 semanas</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA WhatsApp -->
+            <div class="cta-card">
+                <h3>✨ Grupo VIP ✨</h3>
+                <p>Mais de 3.000 pessoas já economizam aqui</p>
+                <a href="https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> QUERO ENTRAR
+                </a>
+                <div class="info-row" style="margin-top: 20px; color: rgba(255,255,255,0.8);">
+                    <span><i class="fas fa-check-circle"></i> Gratuito</span>
+                    <span><i class="fas fa-clock"></i> Ofertas diárias</span>
+                </div>
+            </div>
+
+            <!-- Selo de confiança -->
+            <div style="text-align: center; margin: 16px 0 8px;">
+                <span style="background: #f0e4d8; padding: 8px 16px; border-radius: 40px; font-size: 0.8rem; color: #5e4b38;">
+                    <i class="fas fa-shield-alt"></i> Links oficiais • Amazon, Shopee, ML
+                </span>
+            </div>
+
+            <!-- Footer com links legais -->
+            <div class="footer">
+                <div class="footer-links">
+                    <a href="javascript:void(0)" onclick="openLegal('privacidade')">Privacidade</a>
+                    <a href="javascript:void(0)" onclick="openLegal('termos')">Termos</a>
+                    <a href="mailto:contato@casaachadinhos.com.br">Contato</a>
+                </div>
+                <p>© 2026 Casa Achadinhos - Curadoria independente</p>
+                <p style="margin-top: 8px; font-size: 0.7rem;">Não vendemos nada. Apenas compartilhamos links de parceiros.</p>
+            </div>
         </div>
     </div>
 
-    <div id="legalModal" class="legal-box">
-        <div class="legal-content">
-            <span class="close-btn" onclick="closeLegal()">[FECHAR X]</span>
+    <!-- Modal para políticas -->
+    <div id="legalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLegal()">&times;</span>
             <div id="legalText"></div>
         </div>
     </div>
@@ -103,12 +619,22 @@
             modal.style.display = 'block';
             
             if(type === 'privacidade') {
-                text.innerHTML = "<h2>Política de Privacidade</h2><p>Este site não coleta dados pessoais, financeiros ou senhas. Nosso objetivo é apenas a curadoria de links públicos de lojas varejistas. Ao clicar em um link, você será redirecionado para a plataforma oficial da respectiva loja, que possui sua própria política de privacidade.</p>";
+                text.innerHTML = "<h2 style='color:#2c3e4e; margin-bottom:20px;'>Política de Privacidade</h2><p style='color:#4a5b68; line-height:1.6;'>Não coletamos nenhum dado pessoal. Este site é apenas uma página de divulgação de um grupo de WhatsApp. Ao clicar no link, você será redirecionado para o aplicativo WhatsApp. As compras são realizadas diretamente nos sites das lojas parceiras (Amazon, Shopee, Mercado Livre, etc), que possuem suas próprias políticas de privacidade.</p>";
             } else {
-                text.innerHTML = "<h2>Termos de Uso</h2><p>O Descontos VIP Diário atua como afiliado e divulgador. Não nos responsabilizamos pela entrega, garantia ou preços dos produtos anunciados, que são de total responsabilidade das lojas parceiras (Amazon, Shopee, etc). Verifique sempre as condições no checkout da loja.</p>";
+                text.innerHTML = "<h2 style='color:#2c3e4e; margin-bottom:20px;'>Termos de Uso</h2><p style='color:#4a5b68; line-height:1.6;'>O Casa Achadinhos é um portal independente de curadoria de ofertas. Não nos responsabilizamos por estoque, prazos de entrega ou qualidade dos produtos, que são de responsabilidade exclusiva das lojas parceiras. Todas as compras são realizadas nos sites oficiais (Amazon, Shopee, Mercado Livre, etc). Os preços e descontos podem sofrer alteração sem aviso prévio.</p>";
             }
         }
-        function closeLegal() { document.getElementById('legalModal').style.display = 'none'; }
+        
+        function closeLegal() { 
+            document.getElementById('legalModal').style.display = 'none'; 
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('legalModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
