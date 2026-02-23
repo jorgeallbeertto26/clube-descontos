@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1696029998437124');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1696029998437124&ev=PageView&noscript=1"
+    /></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa com Desconto | Achados para seu lar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
+        /* Mantendo seus estilos originais */
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +31,7 @@
         }
 
         body {
-            background: #faf7f2;  /* Tom quente e aconchegante */
+            background: #faf7f2;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -32,7 +49,6 @@
             position: relative;
         }
 
-        /* Header com imagem de ambiente */
         .hero {
             height: 240px;
             background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop');
@@ -87,12 +103,10 @@
             max-width: 280px;
         }
 
-        /* Conteúdo principal */
         .content {
             padding: 24px 20px 30px;
         }
 
-        /* Perfil do Instagram */
         .profile-card {
             display: flex;
             align-items: center;
@@ -151,7 +165,6 @@
             color: #c97c4e;
         }
 
-        /* Chamada principal */
         .headline {
             text-align: center;
             margin-bottom: 28px;
@@ -177,7 +190,6 @@
             font-size: 1.1rem;
         }
 
-        /* Benefícios com emojis de casa */
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -205,7 +217,6 @@
             font-size: 0.95rem;
         }
 
-        /* Prévia de produtos (estilo Instagram) */
         .preview-title {
             display: flex;
             align-items: center;
@@ -277,7 +288,6 @@
             text-decoration: line-through;
         }
 
-        /* Depoimento */
         .testimonial {
             background: #fff6ed;
             padding: 20px;
@@ -331,7 +341,6 @@
             display: block;
         }
 
-        /* CTA WhatsApp */
         .cta-card {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             border-radius: 32px;
@@ -381,7 +390,6 @@
             font-size: 1.8rem;
         }
 
-        /* Info extra */
         .info-row {
             display: flex;
             align-items: center;
@@ -396,7 +404,6 @@
             color: #f79d4e;
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding-top: 20px;
@@ -423,7 +430,6 @@
             text-decoration: underline;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -465,7 +471,6 @@
 <body>
 
     <div class="container">
-        <!-- Hero com imagem de casa aconchegante -->
         <div class="hero">
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -478,15 +483,12 @@
         </div>
 
         <div class="content">
-            <!-- Perfil do Instagram (inspirado na imagem) -->
             <div class="profile-card">
-                <div class="profile-avatar">
-                    🏠
-                </div>
+                <div class="profile-avatar">🏠</div>
                 <div class="profile-info">
-                    <h3>laresaconchegantes</h3>
+                    <h3>dicasdepromodiario</h3>
                     <div class="username">
-                        <i class="fab fa-instagram" style="color: #c97c4e;"></i> @laresaconchegantes
+                        <i class="fab fa-instagram" style="color: #c97c4e;"></i> @dicasdepromodiario
                     </div>
                     <div class="followers">
                         <i class="fas fa-heart"></i> 5,5 mil seguem
@@ -494,13 +496,11 @@
                 </div>
             </div>
 
-            <!-- Chamada principal -->
             <div class="headline">
                 <h2>Casa <span>Achadinhos</span><br>com super desconto</h2>
                 <p>Selecionamos os melhores preços em decoração, cama, mesa e banho</p>
             </div>
 
-            <!-- Benefícios com viés de lar -->
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="benefit-emoji">🛋️</div>
@@ -520,7 +520,6 @@
                 </div>
             </div>
 
-            <!-- Prévia de produtos (rolagem horizontal) -->
             <div class="preview-title">
                 <i class="fas fa-fire"></i>
                 <h4>Achados quentinhos da semana</h4>
@@ -559,7 +558,6 @@
                 </div>
             </div>
 
-            <!-- Depoimento -->
             <div class="testimonial">
                 <i class="fas fa-quote-left"></i>
                 <p>"Entrei no grupo semana passada e já comprei um tapete lindo pela metade do preço. Tô amando!"</p>
@@ -571,7 +569,6 @@
                 </div>
             </div>
 
-            <!-- CTA WhatsApp -->
             <div class="cta-card">
                 <h3>✨ Grupo VIP ✨</h3>
                 <p>Mais de 3.000 pessoas já economizam aqui</p>
@@ -584,14 +581,12 @@
                 </div>
             </div>
 
-            <!-- Selo de confiança -->
             <div style="text-align: center; margin: 16px 0 8px;">
                 <span style="background: #f0e4d8; padding: 8px 16px; border-radius: 40px; font-size: 0.8rem; color: #5e4b38;">
                     <i class="fas fa-shield-alt"></i> Links oficiais • Amazon, Shopee, ML
                 </span>
             </div>
 
-            <!-- Footer com links legais -->
             <div class="footer">
                 <div class="footer-links">
                     <a href="javascript:void(0)" onclick="openLegal('privacidade')">Privacidade</a>
@@ -604,7 +599,6 @@
         </div>
     </div>
 
-    <!-- Modal para políticas -->
     <div id="legalModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeLegal()">&times;</span>
