@@ -17,7 +17,7 @@ window.CONFIG = {
   linkGrupo: "https://chat.whatsapp.com/LdGdYO5Vr6EG8nk1j3Pt6k", /* convite do grupo de WhatsApp */
   instagram: "dicasdepromodiario",
   pixelMeta: "1696029998437124", /* pixel da Meta que já estava na página; deixe "" para desligar */
-  contadorURL: "" /* endereço do contador gratuito (planilha); fica vazio até ser ligado */
+  contadorURL: "https://descontosvipdiario.goatcounter.com/count" /* contador gratuito (GoatCounter, sem cookie); deixe "" para desligar */
 };
 (function () {
   var q = location.search;
@@ -393,6 +393,18 @@ html.indo .indo-tela{display:grid;place-content:center;gap:16px;min-height:100vh
     if (!painel) { painel = document.createElement("div"); painel.className = "debug"; document.body.appendChild(painel); }
     painel.textContent = situacao + "\n" + JSON.stringify(d) + "\n\n" + painel.textContent;
   }
+  /* contador: cada visita e cada toque vira uma linha no painel do GoatCounter */
+  var NOMES = { "instagram-bio": "bio do Instagram", stories: "Stories", status: "Status do WhatsApp", impresso: "QR impresso", direto: "direto (link sem origem)" };
+  var CATS = { "casa-e-cozinha": "Casa e cozinha", beleza: "Beleza", eletronicos: "Eletrônicos", moda: "Moda", utilidades: "Utilidades" };
+  function conta(caminho, titulo, evento) {
+    var u = C.contadorURL + "?p=" + encodeURIComponent(caminho) + "&t=" + encodeURIComponent(titulo) + "&e=" + (evento ? "true" : "false") +
+      "&s=" + encodeURIComponent([screen.width, screen.height, window.devicePixelRatio || 1].join(",")) + "&rnd=" + Math.random().toString(36).slice(2, 8);
+    if (!evento && document.referrer && document.referrer.indexOf(location.origin) !== 0) u += "&r=" + encodeURIComponent(document.referrer);
+    var foi = false;
+    try { foi = navigator.sendBeacon(u); } catch (e) {}
+    if (!foi) { try { new Image().src = u; } catch (e) {} }
+    return caminho;
+  }
   function registra(evento, extra) {
     var d = {
       evento: evento, origem: origem, categoria: categoria || "",
@@ -400,14 +412,20 @@ html.indo .indo-tela{display:grid;place-content:center;gap:16px;min-height:100vh
       tela: window.matchMedia("(min-width: 900px)").matches ? "computador" : "celular",
       quando: new Date().toISOString(), pagina: location.pathname
     };
-    var enviar = aoVivo && C.contadorURL;
+    var enviar = aoVivo && C.contadorURL, linhas = [];
     if (enviar) {
-      var corpo = JSON.stringify(d), foi = false;
-      try { foi = navigator.sendBeacon(C.contadorURL, new Blob([corpo], { type: "text/plain;charset=UTF-8" })); } catch (e) {}
-      if (!foi) { try { fetch(C.contadorURL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=UTF-8" }, body: corpo }); } catch (e) {} }
+      var o = NOMES[origem] || origem;
+      if (evento === "visita") linhas.push(conta("/visita/" + origem, "Visita vinda de: " + o, false));
+      if (evento === "clique") {
+        linhas.push(conta("clique/" + origem, "Toque em entrar no grupo, vindo de: " + o, true));
+        var cats = categoria ? [categoria] : [];
+        for (var i = 0; i < interesses.length; i++) if (cats.indexOf(interesses[i]) < 0) cats.push(interesses[i]);
+        for (var k = 0; k < cats.length; k++) linhas.push(conta("clique-categoria/" + cats[k], "Toque em entrar no grupo, categoria: " + (CATS[cats[k]] || cats[k]), true));
+      }
+      if (evento === "marcou") linhas.push(conta("quer-ver/" + d.marcou, "Marcou quero ver: " + (CATS[d.marcou] || d.marcou), true));
     }
     if (evento === "clique" && window.fbq) { try { fbq("track", "Lead", { content_name: "grupo-whatsapp", origem: origem, categoria: categoria, botao: d.botao }); } catch (e) {} }
-    if (debug) mostra(d, enviar ? "enviado ao contador" : "teste: não enviado");
+    if (debug) mostra(d, enviar ? "enviado ao contador: " + linhas.join(", ") : "teste: não enviado");
   }
 
   /* botões de entrada */
