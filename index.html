@@ -132,7 +132,7 @@ h2{margin:0;font-family:var(--display);font-weight:800;line-height:1;letter-spac
 .final p{margin:0;font-size:17px;max-width:520px}
 
 /* Barra fixa */
-.barra{position:sticky;bottom:0;z-index:5;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,212,59,.94);border-top:2px solid var(--tinta);display:flex;justify-content:center;transition:transform .3s ease}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,212,59,.94);border-top:2px solid var(--tinta);display:flex;justify-content:center;transition:transform .3s ease}
 .barra a{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:480px;background:var(--tinta);color:var(--branco);text-decoration:none;border-radius:999px;padding:14px 20px;font-weight:800;font-size:17px;min-height:44px}
 .barra.escondida{transform:translateY(110%)}
 
