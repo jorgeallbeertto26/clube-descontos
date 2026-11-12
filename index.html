@@ -83,7 +83,7 @@ h1 .destaque{background:var(--tinta);color:var(--amarelo);padding:0 14px;border-
 .celular-area{flex:0 1 360px;min-width:0;margin:0 auto;position:relative;padding:24px 0}
 .etiqueta{position:absolute;z-index:2;border:3px solid var(--tinta);font-family:var(--display);font-weight:800;font-size:18px;box-shadow:5px 5px 0 var(--tinta);animation:flutua 5s ease-in-out infinite}
 .etiqueta.cheio{--r:-8deg;left:-34px;top:40px;background:var(--branco);border-radius:12px;padding:10px 14px}
-.etiqueta.corre{--r:7deg;right:-26px;bottom:70px;background:var(--vermelho);color:var(--branco);border-radius:999px;padding:12px 18px;animation-delay:1.4s}
+.etiqueta.corre{--r:7deg;right:-26px;top:-4px;background:var(--vermelho);color:var(--branco);border-radius:999px;padding:12px 18px;animation-delay:1.4s}
 .riscado{position:relative;display:inline-block}
 .riscado::after{content:"";position:absolute;left:-4%;top:52%;height:6px;background:var(--vermelho);border-radius:3px;animation:risca 1.1s .6s cubic-bezier(.7,0,.3,1) both}
 .celular{background:var(--tinta);border-radius:44px;padding:12px;box-shadow:14px 14px 0 rgba(17,17,17,.18)}
@@ -98,6 +98,15 @@ h1 .destaque{background:var(--tinta);color:var(--amarelo);padding:0 14px;border-
 .msg strong{font-size:15px}
 .msg .loja{font-size:13px;color:#4B5563}
 .msg:nth-child(2){animation-delay:0s}.msg:nth-child(3){animation-delay:1.3s}.msg:nth-child(4){animation-delay:2.6s}.msg:nth-child(5){animation-delay:3.9s}
+.msg{flex-direction:row;align-items:center;gap:10px;max-width:94%}
+.msg img{width:64px;height:64px;border-radius:8px;object-fit:cover;flex:0 0 auto}
+.msg > div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.msg strong{font-size:14px;line-height:1.2}
+.msg .de{font-size:12px;color:#6B7280;text-decoration:line-through;text-decoration-color:var(--vermelho)}
+.msg .por{font-family:var(--display);font-weight:800;font-size:19px;color:#15803D;line-height:1.1}
+.msg .loja{font-size:11px}
+.como{margin:0;font-size:15px;line-height:1.4;padding-left:8px;max-width:440px}
+.zap{font-style:normal;background:#25D366;color:#fff;border-radius:6px;padding:1px 8px;white-space:nowrap}
 .tela-cta{margin:0 12px 12px;background:var(--tinta);color:var(--amarelo);text-decoration:none;text-align:center;border-radius:999px;padding:14px;font-weight:700;font-size:15px;min-height:44px}
 
 /* Raspadinha */
@@ -117,6 +126,12 @@ h2{margin:0;font-family:var(--display);font-weight:800;line-height:1;letter-spac
 .premio .total{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .premio .valor{font-family:var(--display);font-weight:800;font-size:72px;line-height:1}
 .premio .cta{font-size:18px;padding:16px 28px}
+.passos{flex:0 1 460px;min-width:0;margin:0 auto;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px;width:100%}
+.passos li{display:flex;gap:16px;align-items:flex-start;background:#1E1E1E;border:2px solid #333;border-radius:20px;padding:20px}
+.passos .num{flex:0 0 44px;height:44px;border-radius:50%;background:var(--amarelo);color:var(--tinta);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:22px}
+.passos strong{display:block;font-family:var(--display);font-size:21px;line-height:1.25;margin-bottom:6px}
+.passos span:not(.num){font-size:16px;line-height:1.45;color:#D4D4D4}
+.abrindo-dica{margin:0;font-family:var(--texto);font-size:19px;line-height:1.5;max-width:320px}
 [hidden]{display:none !important}
 
 /* Regras */
@@ -222,6 +237,7 @@ footer a{color:var(--amarelo)}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD43B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
         </a>
         <div class="garantias"><span>✓ Grátis</span><span>✓ Sem spam</span><span>✓ Sai quando quiser</span></div>
+        <p class="como">O WhatsApp abre o convite. Toque em <b>Entrar no grupo</b> e pronto.</p>
       </div>
     </div>
 
@@ -234,12 +250,12 @@ footer a{color:var(--amarelo)}
             <div class="avatar">VIP</div>
             <div><strong>Descontos VIP Diário</strong><small>só o Jota posta aqui</small></div>
           </div>
+          <!-- ACHADOS DO DIA: troque as 3 mensagens abaixo (foto em /hoje/, nome, preços e data) -->
           <div class="conversa">
-            <div class="aviso">exemplo do formato</div>
-            <div class="msg"><span class="cat" style="color:#C2410C">Casa e cozinha</span><strong>Air fryer</strong><span class="loja">Mercado Livre · preço e link no grupo</span></div>
-            <div class="msg"><span class="cat" style="color:#BE185D">Beleza</span><strong>Kit skincare</strong><span class="loja">Shopee · preço e link no grupo</span></div>
-            <div class="msg"><span class="cat" style="color:#1D4ED8">Eletrônicos</span><strong>Fone de ouvido</strong><span class="loja">Shopee · preço e link no grupo</span></div>
-            <div class="msg"><span class="cat" style="color:#15803D">Moda</span><strong>Tênis casual</strong><span class="loja">Mercado Livre · preço e link no grupo</span></div>
+            <div class="aviso">caiu no grupo · 12/11</div>
+            <div class="msg"><img src="hoje/garrafa.jpg" alt="" width="64" height="64"><div><strong>Garrafa térmica inox</strong><span class="de">De R$ 69,54</span><span class="por">R$ 31,99</span><span class="loja">Shopee · preço de 12/11</span></div></div>
+            <div class="msg"><img src="hoje/creatina.jpg" alt="" width="64" height="64"><div><strong>Creatina pura 300g</strong><span class="de">De R$ 75,28</span><span class="por">R$ 39,90</span><span class="loja">Shopee · preço de 12/11</span></div></div>
+            <div class="msg"><img src="hoje/vonixx.jpg" alt="" width="64" height="64"><div><strong>Kit Vonixx automotivo</strong><span class="de">De R$ 130,14</span><span class="por">R$ 104,11</span><span class="loja">Shopee · preço de 12/11</span></div></div>
           </div>
           <a class="tela-cta" data-entrar="celular" href="#entrar">Quero ver os de hoje</a>
         </div>
@@ -250,23 +266,14 @@ footer a{color:var(--amarelo)}
   <section class="faixa-escura">
     <div class="wrap">
       <div class="rasp-texto">
-        <span class="rotulo">Raspadinha da entrada</span>
-        <h2>Quanto custa entrar? Raspa aí.</h2>
-        <p>Você recebe os achados e compra só se quiser, direto na loja. Sem cadastro, sem nome, sem CPF.</p>
+        <span class="rotulo">Como entrar</span>
+        <h2>São 2 toques. Grátis.</h2>
+        <p>Sem cadastro, sem nome, sem CPF. Você recebe os achados e compra só se quiser, direto na loja.</p>
       </div>
-      <div class="rasp-area">
-        <button type="button" class="raspar" id="raspar">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V5a2 2 0 0 1 4 0v5"/><path d="M11 10V4a2 2 0 0 1 4 0v6"/><path d="M15 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4L3 14a2 2 0 0 1 3.4-2L7 13"/></svg>
-          <span class="t1">Toque para raspar</span>
-          <span class="t2">e descubra o preço da entrada</span>
-        </button>
-        <div class="premio" id="premio" hidden aria-live="polite">
-          <span class="total">Total a pagar</span>
-          <strong class="valor ginga">R$ 0,00</strong>
-          <span>Entrar é grátis. Sair também.</span>
-          <a class="cta" data-entrar="raspadinha" href="#entrar">Então bora: entrar no grupo</a>
-        </div>
-      </div>
+      <ol class="passos">
+        <li><span class="num">1</span><div><strong>Toque em "Entrar no grupo grátis"</strong><span>O WhatsApp abre sozinho, com o convite do grupo.</span></div></li>
+        <li><span class="num">2</span><div><strong>No WhatsApp, toque em <em class="zap">Entrar no grupo</em></strong><span>Sem esse toque você não entra. É o botão verde embaixo do nome do grupo.</span></div></li>
+      </ol>
     </div>
   </section>
 
@@ -278,7 +285,7 @@ footer a{color:var(--amarelo)}
 
   <section class="wrap final" id="entrar">
     <h2>Entra agora e pega desde o <span class="sub ginga">primeiro achado.</span></h2>
-    <p>Ao tocar, o WhatsApp mostra o grupo antes. Você só confirma se quiser.</p>
+    <p>Ao tocar, o WhatsApp abre o convite. É só tocar em <b>Entrar no grupo</b>.</p>
     <a class="cta grande" data-entrar="final" href="#entrar">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
       Entrar no grupo grátis
@@ -299,7 +306,8 @@ footer a{color:var(--amarelo)}
 
 <div class="abrindo" id="abrindo" hidden role="status">
   <div class="girando" aria-hidden="true"></div>
-  <strong>Abrindo o grupo no WhatsApp…</strong>
+  <strong>Abrindo o WhatsApp…</strong>
+  <p class="abrindo-dica">Lá, toque em <em class="zap">Entrar no grupo</em> para confirmar.</p>
   <a href="#" id="abrindo-link">Se não abrir, toque aqui</a>
 </div>
 
@@ -400,7 +408,7 @@ footer a{color:var(--amarelo)}
         if (ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.button === 1) return;
         ev.preventDefault();
         abrindo.hidden = false;
-        setTimeout(function () { location.href = C.linkGrupo; }, 350);
+        setTimeout(function () { location.href = C.linkGrupo; }, 1100);
       });
     })(links[i]);
   }
@@ -415,12 +423,6 @@ footer a{color:var(--amarelo)}
   }
   registra("visita");
 
-  /* raspadinha */
-  document.getElementById("raspar").addEventListener("click", function () {
-    this.hidden = true;
-    document.getElementById("premio").hidden = false;
-    registra("raspou");
-  });
 
   /* barra fixa: some quando o botão final está na tela */
   var barra = document.getElementById("barra");
